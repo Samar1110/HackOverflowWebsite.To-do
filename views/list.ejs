@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Oswald:wght@200&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <title>To-do List</title>
+    <link rel="icon" href="Icons/to-do.png" type="image/icon type">
+  </head>
+  <body>
+    <section >
+      <section id="title">
+        <nav class="navbar navbar-light background  fixed-top bg-info">
+          <div class="container-fluid">
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div>
+            <img src="Icons/logo1.png" style="height: 5vh;padding-left: 130px;margin-right: 80px;">
+          </div>
+          <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+            <h5 class="offcanvas-title myName" id="offcanvasNavbarLabel"></h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="https://hack-overflow-website-home.vercel.app/"><img src="Icons/home.png" style="height: 6vh;"> Home</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link active" href="https://to-dolistt.herokuapp.com/"><img src="Icons/to-do.png" style="height: 6vh;"> To-do </a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="https://hack-overflow-website-calendar.vercel.app/"><img src="Icons/calendar.png" style="height: 6vh;"> Calendar</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link  " href="https://hack-overflow-website-notes-taking.vercel.app/"><img src="Icons/notes.png" style="height: 6vh;"> Notes</a>
+              </li>
+              <li class="nav-item">
+              <a class="nav-link" href="https://hack-overflow-website-links.vercel.app/"><img src="Icons/links.png" style="height: 6vh;"> Links</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://hack-overflow-website-upskill.vercel.app/"><img src="Icons/rocket.png" style="height: 6vh;"> Upskill</a>
+              </li>
+            </ul>
+            </div>
+          </div>
+          </div>
+        </nav>
+        </section>
+    
+    </section>
+    <div class="todobackground" style="background-image: url('Icons/background.png');">
+      <div style="display:flex;justify-content: space-between;">
+        <div class="todoHeading">
+          <h1 class="text-center" id="todoitems" style="padding-top: 120px;"><img src="Icons/to-do.png" style="height: 9vh;padding-right: 10px;">To-do list</h1>
+           <p class="textContent">Keep a track of your progress</p>
+        </div>
+        <div>
+          <img class="logo" src="Icons/logo1.png" >
+        </div>
+      </div>
+
+    </div>
+    
+      
+    </div>
+    <div class="box" id="heading">
+      <h1><%= kindOfDay %></h1>
+    </div>
+   
+    <div class="box1">
+      <% newListItems.forEach(function(item){%>
+      <form action="/delete" method="post">
+        <div class="item">
+          <div class="strike">
+            <input type="checkbox" class="checkimage" aria-label="checkimage" onclick="myFunction()"/>
+            <p><%=item.name%></p>
+          </div>
+
+          <button type="submit" name="btn" value="<%=item._id%>">-</button>
+        </div>
+      </form>
+
+      <% })%>
+
+      <form class="item" action="/" method="post">
+        <input
+          type="text"
+          name="newItem"
+          placeholder="New Event , Dead Line"
+          autocomplete="off"
+        />
+        <button type="submit" name="button">+</button>
+      </form>
+    </div>
+     <div>
+      <img src=""  id="image" style="height: 40vh;padding-left: 20px;"/>
+    </div>
+  </body>
+  <footer>
+    <div class="text-center">
+      <p style="padding-bottom: 80px;margin-top: 100px;margin-bottom: 0px; padding-top: 80px;padding-left: 10px;padding-right: 10px;" class="copyright">Copyright 2022 Khujli Enjoyers</p>
+    </div>
+  </footer>
+  <script type="text/javascript">
+    function myFunction() {
+
+      var num = Math.floor( Math.random() * 3 ) +1;
+    var img = document.getElementById('image')
+          img.setAttribute('src', "images/"+num+".gif")
+          function disappear(){
+              img.setAttribute('src','')
+          }
+          setTimeout(disappear,3500);
+
+    }
+  </script>
+</html>
